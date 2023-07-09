@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeWindStyleSheet } from "nativewind";
+import Navigation from "./src/screens";
+import { NavigationContainer } from "@react-navigation/native";
+import { Text } from "react-native";
+NativeWindStyleSheet.setOutput({
+  default: "native",
+});
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer linking={linking}>
+      <Navigation />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const linking = {
+  config: {
+    screens: {
+      path: "",
+      Home: {
+        screens: {},
+      },
+      Detail: ":id",
+      Setting: {
+        path: "setting",
+      },
+    },
   },
-});
+};
